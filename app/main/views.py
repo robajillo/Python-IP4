@@ -8,8 +8,10 @@ from ..requests import get_quotes
 
 @main.route('/')
 def index():
+    # quotes = get_quotes(author)
+    blogs = Blog.query.all()
 
-    return render_template("index.html")
+    return render_template("index.html",blogs=blogs)
 
 @main.route('/user/<uname>')
 def profile(uname):
