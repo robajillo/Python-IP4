@@ -9,8 +9,14 @@ class ProdConfig(Config):
     pass
 
 class DevConfig(Config):
-
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://roba:access@localhost/blog'
+    
     DEBUG = True
+
+class TestConfig(Config):
+
+    pass
+    
     
 config_options = {
 'development':DevConfig,
