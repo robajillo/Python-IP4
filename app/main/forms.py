@@ -1,3 +1,6 @@
+from flask_wtf import FlaskForm
+
+
 class BioForm(FlaskForm):
     bio = TextAreaField('Write A Short Bio About You...')
     submit = SubmitField('Submit')
