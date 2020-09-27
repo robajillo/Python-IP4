@@ -39,8 +39,8 @@ class Blog(db.Model):
     __tablename__ = 'blogs'
     
     id = db.Column(db.Integer,primary_key=True)
-    title = db.Column(db.String(255),nullable=False)
-    blog = db.Column(db.String(255),nullable=False)
+    title = db.Column(db.String(255))
+    blog = db.Column(db.String(255))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     posted = db.Column(db.DateTime,default=datetime.utcnow,onupdate=datetime.utcnow())
     
