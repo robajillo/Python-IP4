@@ -4,6 +4,7 @@ from ..models import  User,Blog,Comment
 from .forms import UpdateProfile
 from .. import db,photos
 from . import main
+from ..requests import get_quotes
 
 @main.route('/')
 def index():
