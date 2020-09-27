@@ -50,5 +50,27 @@ class Blog(db.Model):
         
     @classmethod
     def get_blog(cls,id):
-        blogs = Blog.query.filter_by(user_id=id).all()
-        return blogs
+        blog = Blog.query.filter_by(user_id=id).all()
+        return blog
+
+class Comment(db.Model):
+    __tablename__ = 'comments' 
+    
+    id = db.Column(db.Integer, primary_key = True)
+    comments = db.Column(db.String(255))
+    title = db.Column(db.String(255))
+    blog_id = db.Column(db.Integer,db.ForeignKey('blogs.id'))
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+    
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+        
+    @classmethod
+    def get_comments(cls,blog_id):
+        comments = Comment.query.filter_by(blog_id=blog_id).all()
+
+        return comments
+        
+    def __repr__(self):
+        return f'Comment{self.comments}'
