@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content %}
+<div class="container">
+  {{wtf.quick_form(form)}}
+</div>
+
+ <hr>
+ <br>
+
+<div class="container">
+
+ <h2 class='text-center '>Comments</h2>
+
+{% for items in comment %}
+
+<div class="row">
+  <div>
+
+<div class="card">
+  <div class="card-body">
+    
+     <h4 class=>{{items.title}}</h5>
+     <hr>
+      <p>{{items.comments}}</p>
+      <footer></footer>
+    
+  </div>
+</div>
+
+</div>
+
+
+
+{% endfor %}
+
+</div>
+ 
+{% endblock %}
