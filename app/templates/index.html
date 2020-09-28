@@ -5,15 +5,37 @@
  {% for items in blogs[::-1] %}
 
 <div class="card">
- <div class="card-body">
+ <div class="card-body text-center">
   
-  <h5>Author :{{ items.title }}</h5>
+  <h5>Title :{{ items.title }}</h5>
+  <p class="card-text "> Blog: {{items.blog}}</p>
+
+<div class="card-footer text-center">
+<a href='{{url_for('main.new_comment', blog_id = items.id)}}' class="btn btn-secondary btn-sm outline primary"><i class="fas fa-comments-dollar fa-2x"></i> <span style='font-size:14px;'>Comments</span></a>
+</div>
+ </div>
+
+</div>
+{% endfor %}
+</div>
+
+<div class="container">
+<h1 class="text-center"> QUOTES</h1>
+ 
+
+<div class="card">
+ <div class="card-body text-center">
+  
+  <h5>Author :{{ quotes.author }}</h5>
+  <p class="card-text">{{quotes.quote}}</p>
 
 
 
  </div>
 
 </div>
-{% endfor %}
+
 </div>
+
+ 
 {% endblock  %}

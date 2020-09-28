@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-lg navbar-light bg-lightfixed-top" style="background-color: #6bc5d2 ">
+<div class="navbar navbar-expand-lg navbar-dark secondary-color ">
         <div class="container-fluid">
             <div class="navbar-header">
                 
@@ -6,22 +6,18 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/pitches">Pitches</a></li>
+                    <li><a href="/blog"style="color: #FFFFFF">Blogs</a></li>
                 </ul>
-                &nbsp;
-                 &nbsp; &nbsp;
-                <ul class="nav navbar-nav">
-                    <li><a href="/pitch/new">Create Pitch</a></li>
-                </ul>
+                
 
             </div>
 
                 <ul class="nav navbar-nav navbar-right">
                   {% if current_user.is_authenticated %}
-                  <li><a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li> &nbsp; &nbsp; &nbsp;  
-                  <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+                  <li><a href="{{url_for('main.profile',uname=current_user.username)}}"style="color: #FFFFFF">Profile</a></li> &nbsp; &nbsp; &nbsp;  
+                  <li><a href="{{url_for('auth.logout')}}"style="color: #FFFFFF">Sign out</a></li>
                   {% else %}
-                  <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+                  <li><a href="{{url_for('auth.login')}}"style="color: #FFFFFF">Sign in</a></li>
                   {%endif%}
                 </ul>
                  

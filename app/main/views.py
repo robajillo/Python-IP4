@@ -1,17 +1,17 @@
 from flask_login import login_required,current_user
 from flask import render_template,request,redirect,url_for,abort
 from ..models import  User,Blog,Comment
-from .forms import UpdateProfile
+from .forms import UpdateProfile,BlogForm,CommentForm
 from .. import db,photos
 from . import main
-from ..requests import get_quotes
+from ..requests import get_quote
 
 @main.route('/')
 def index():
-    # quotes = get_quotes(author)
+    quotes = get_quote()
     blogs = Blog.query.all()
 
-    return render_template("index.html",blogs=blogs)
+    return render_template("index.html",blogs=blogs,quotes=quotes)
 
 @main.route('/user/<uname>')
 def profile(uname):
@@ -65,7 +65,7 @@ def new_blog():
         
         return redirect(url_for('main.index'))
     
-    return render_template('blog.html', form=form)
+    return render_template('blog.html', blog_form=form)
 
 
 @main.route('/comments/<int:blog_id>', methods=['GET','POST'])
