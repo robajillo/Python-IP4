@@ -18,7 +18,9 @@ class User(db.Model,UserMixin):
     profile_pic_path = db.Column(db.String())
     bio = db.Column(db.String(255))
     password_hash = db.Column(db.String(255))
-
+    blogs = db.relationship('Blog',backref = 'blogs',lazy = "dynamic")
+    comments = db.relationship('Comment',backref = 'comment',lazy = "dynamic")
+    
 
     @property
     def password(self):
@@ -47,12 +49,15 @@ class Blog(db.Model):
     def save_blog(self):
         db.session.add(self)
         db.session.commit()
-        
+    def delete_blog(self):
+        db.session.delete(self)
+        db.session.commit()
+
     @classmethod
     def get_blog(cls,id):
         blog = Blog.query.filter_by(user_id=id).all()
         return blog
-
+    
 class Comment(db.Model):
     __tablename__ = 'comments' 
     
@@ -65,7 +70,10 @@ class Comment(db.Model):
     def save_comment(self):
         db.session.add(self)
         db.session.commit()
-        
+    
+    def delete_comment(self):
+        db.session.delete(self)
+        db.session.commit()    
     @classmethod
     def get_comments(cls,blog_id):
         comments = Comment.query.filter_by(blog_id=blog_id).all()

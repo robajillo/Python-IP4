@@ -67,6 +67,30 @@ def new_blog():
     
     return render_template('blog.html', blog_form=form)
 
+@main.route('/blog/<blog_id>/update', methods = ['GET','POST'])
+@login_required
+def update_blog(blog_id):
+    quotes = get_quote()
+    blog = Blog.query.get(blog_id)
+    if blog.user_id != current_user.id:
+        abort(403)
+        
+    form = BlogForm()
+    if form.validate_on_submit():
+        blog.title = form.title.data
+        blog.blog = form.blog.data
+        db.session.commit()
+        
+        flash("You have updated your Blog!")
+        
+        return redirect(url_for('main.index',id = blog.id)) 
+    
+    if request.method == 'GET':
+        form.title.data = blog.title
+        form.blog.data = blog.blog
+        
+    return render_template('blog.html', blog_form = form,quotes = quotes, blog=blog)
+
 
 @main.route('/comments/<int:blog_id>', methods=['GET','POST'])
 @login_required
@@ -87,3 +111,34 @@ def new_comment(blog_id):
         return redirect(url_for('main.new_comment', blog_id=blog_id))
     
     return render_template('comment.html', form=form, comment=comment, blog_id=blog_id,blogs=blogs)
+
+@main.route('/blog/<int:blog_id>/delete')
+@login_required
+def delete(blog_id):
+    quotes = get_quote()
+    blogs = Blog.query.all()
+    blog = Blog.query.get(blog_id)
+    if blog.user_id != current_user.id:
+         abort(403)
+    
+    Blog.delete_blog(blog)
+    
+    return redirect(url_for('.index',blog=blog,blogs=blogs,quotes = quotes))
+
+@main.route('/comments/<int:comment_id>/delete')
+@login_required
+def delete_comment(comment_id):
+    quotes = get_quote()
+    comments = Comment.query.all()
+    comment = Comment.query.get(comment_id)
+    if comment.user_id != current_user.id:
+        abort(403)
+    
+    Comment.delete_comment(comment)
+    
+    return redirect(url_for('.index', comments=comments, comment=comment,quotes = quotes))
+
+@main.route('/subscribe',methods = ['POST','GET'])
+def subscribe():
+       
+    return render_template('subscribe.html')
