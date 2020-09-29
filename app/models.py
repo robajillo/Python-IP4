@@ -84,8 +84,21 @@ class Comment(db.Model):
         return f'Comment{self.comments}'
 
 class Quote:
-    def __init__(self,id, author, quote, link):
+
+    quote_list = []
+
+    def __init__(self,id, author, quote, permalink):
         self.id = id
         self.author = author
         self.quote = quote
         self.permalink = permalink
+
+    def save_quote(self):
+        Quote.quote_list.append(self)
+
+    @classmethod
+    
+    def get_quote(cls,id):
+        for id in cls.quote_list:
+            if id.id == id:
+                return id
