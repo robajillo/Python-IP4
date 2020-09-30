@@ -9,7 +9,7 @@ This is a personal blogging web application that allows users to post and delete
 
 #### Live Demo
 
-Click [Link]() to visit the site
+Click [Link](https://blog-indepedent-project.herokuapp.com/) to visit the site
 
 #### Development Installation
 To get the code..
