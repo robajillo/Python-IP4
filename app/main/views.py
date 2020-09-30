@@ -81,7 +81,7 @@ def update_blog(blog_id):
         blog.blog = form.blog.data
         db.session.commit()
         
-        flash("You have updated your Blog!")
+        
         
         return redirect(url_for('main.index',id = blog.id)) 
     
