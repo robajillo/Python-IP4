@@ -7,8 +7,9 @@ class Config:
 
     
 class ProdConfig(Config):
+    DATABASE_URL = 'postgres://uttqoetiuwdjyr:8232fad3955e3137ef7a0d96470eaf1fee7e1e4aa20422ff040f96f85cbb67d6@ec2-107-22-7-9.compute-1.amazonaws.com:5432/dc9df4caacephipostgres://uttqoetiuwdjyr:8232fad3955e3137ef7a0d96470eaf1fee7e1e4aa20422ff040f96f85cbb67d6@ec2-107-22-7-9.compute-1.amazonaws.com:5432/dc9df4caacephipostgres://uttqoetiuwdjyr:8232fad3955e3137ef7a0d96470eaf1fee7e1e4aa20422ff040f96f85cbb67d6@ec2-107-22-7-9.compute-1.amazonaws.com:5432/dc9df4caacephipostgres://uttqoetiuwdjyr:8232fad3955e3137ef7a0d96470eaf1fee7e1e4aa20422ff040f96f85cbb67d6@ec2-107-22-7-9.compute-1.amazonaws.com:5432/dc9df4caacephipostgres://uttqoetiuwdjyr:8232fad3955e3137ef7a0d96470eaf1fee7e1e4aa20422ff040f96f85cbb67d6@ec2-107-22-7-9.compute-1.amazonaws.com:5432/dc9df4caacephipostgres://uttqoetiuwdjyr:8232fad3955e3137ef7a0d96470eaf1fee7e1e4aa20422ff040f96f85cbb67d6@ec2-107-22-7-9.compute-1.amazonaws.com:5432/dc9df4caacephipostgres://uttqoetiuwdjyr:8232fad3955e3137ef7a0d96470eaf1fee7e1e4aa20422ff040f96f85cbb67d6@ec2-107-22-7-9.compute-1.amazonaws.com:5432/dc9df4caacephipostgres://uttqoetiuwdjyr:8232fad3955e3137ef7a0d96470eaf1fee7e1e4aa20422ff040f96f85cbb67d6@ec2-107-22-7-9.compute-1.amazonaws.com:5432/dc9df4caacephipostgres://uttqoetiuwdjyr:8232fad3955e3137ef7a0d96470eaf1fee7e1e4aa20422ff040f96f85cbb67d6@ec2-107-22-7-9.compute-1.amazonaws.com:5432/dc9df4caacephi'
 
-    pass
+    
 
 class DevConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://roba:access@localhost/blog'
